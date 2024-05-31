@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\mensajeController;
 
-Route::get('/', function () {
+Route::get('/',function () {
     return view('welcome');
 });
 
-Route::get('/hola',function(){
-    return 'hola';
-});
+Route::get('/mensaje', [mensajeController::class, 'mostrarMensaje']);
