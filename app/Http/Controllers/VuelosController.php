@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-class BuscarVuelos extends Controller
+class VuelosController extends Controller
 {
     public function showFlightDetails()
     {
         $client = new Client();
-        $response = $client->get('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PER&destinationLocationCode=BKK&departureDate=2024-07-02&adults=1&nonStop=false&max=250'); // URL y endpoint de la API de Amadeus
-    
+        $accessToken = 'RUAoeFARs1AS4KOwdVvjeCRyY2n1N2vo';
+        $response = $client->get('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PER&destinationLocationCode=BKK&departureDate=2024-07-02&adults=1&nonStop=false&max=250', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+                'Content-Type' => 'application/json'
+            ]
+        ]);
         $flightsData = json_decode($response->getBody(), true);
 
         $flights = [];
