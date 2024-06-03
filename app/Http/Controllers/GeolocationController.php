@@ -36,13 +36,22 @@ class GeolocationController extends Controller
             $lat = $data['location']['lat'];
             $lng = $data['location']['lng'];
             
-            // Aquí puedes utilizar otra API de Google Maps para obtener el nombre del país a partir de las coordenadas
-            // Por ejemplo, Reverse Geocoding API: https://developers.google.com/maps/documentation/geocoding/overview#ReverseGeocoding
-    
-            // Ejemplo de obtención del nombre del país (solo como referencia)
-            $country = 'Nombre del país obtenido';
+        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$lat.','.$lng.'&key='.$apiKey);
+
+        $geocodingData = json_decode($response->getBody(), true);
+
+        // Procesar la respuesta para obtener el nombre del país
+        $country = '';
+        if (isset($geocodingData['results'][0]['address_components'])) {
+            foreach ($geocodingData['results'][0]['address_components'] as $component) {
+                if (in_array('country', $component['types'])) {
+                    $country = $component['long_name'];
+                    break;
+                }
+            }
         }
-    
-        return view('deshboard',compact('country'));
+        
+        return view('dashboard',compact('country'));
+        }
     }
 }
