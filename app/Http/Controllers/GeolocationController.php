@@ -43,6 +43,6 @@ class GeolocationController extends Controller
             $country = 'Nombre del país obtenido';
         }
     
-        return view('deshboard', ['country' => $country]);
+        return view('deshboard',compact('country'));
     }
 }
