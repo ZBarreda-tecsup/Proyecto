@@ -25,6 +25,7 @@
                     <h1>Detalles de Vuelos</h1>
                     @foreach($flights as $flight)
                         <div class="flight-container">
+                            <a href="{{ route('vuelos.index') }}">
                             <div class="title">
                                 <p>{{ $flight['origin'] }} - {{ $flight['destination'] }}</p>
                             </div>
@@ -32,6 +33,7 @@
                                 <p>Fecha de Salida: {{ $flight['departureDate'] }}</p>
                                 <p>Precio: {{ $flight['price'] }} {{ $flight['currency'] }}</p>
                             </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>

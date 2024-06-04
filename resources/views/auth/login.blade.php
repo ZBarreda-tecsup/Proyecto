@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <div style="background: url('https://s1.1zoom.me/b5050/4/Passenger_Airplanes_Sky_499619_3840x2400.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +49,5 @@
             </x-primary-button>
         </div>
     </form>
+    </div>
 </x-guest-layout>
