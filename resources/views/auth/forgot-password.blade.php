@@ -1,4 +1,4 @@
-<x-custom-guest-layout>
+<x-guest2-layout>
     <h1 class="text-1xl font-bold text-left mb-12" style="width: 75%; margin-left: auto; margin-right: auto;">
         {{ __('Forgot your password?') }}
     </h1>
@@ -24,4 +24,4 @@
             </div>
         </form>
     </div>
-</x-custom-guest-layout>
+</x-guest2-layout>
